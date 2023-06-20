@@ -38,6 +38,9 @@
       init.defaultBranch = "main";
     };
     delta.enable = true;
+    delta.options = {
+      side-by-side = true;
+    };
   };
 
   programs.neovim = {
@@ -63,6 +66,7 @@
       gs = "git status";
       ga = "git add";
       gc = "git commit";
+      gd = "git diff";
       gw = "git switch";
       gl = "git log";
     };
