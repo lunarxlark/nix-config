@@ -67,8 +67,12 @@
       ga = "git add";
       gc = "git commit";
       gd = "git diff";
+      gdc = "git diff --cached";
+      gf = "git fetch";
       gw = "git switch";
-      gl = "git log";
+      gl = "git log --oneline";
+      gp = "git pull origin";
+      ghprv = "gh pr view --web";
     };
     initExtra = builtins.readFile ./function.zsh;
     enableAutosuggestions = true;
@@ -78,6 +82,14 @@
       save = 10000;
       size = 10000;
       share = true;
+      ignorePatterns = [
+        "ls*"
+	"ll*"
+	"cd *"
+	"pwd"
+	"zsh"
+	"exit"
+      ];
     };
   };
 
@@ -106,6 +118,16 @@
   programs.wezterm = {
     enable = true;
     extraConfig = ''
+      wezterm.on('update-status', function(window, pane)
+        local overrides = window:get_config_overrides() or {}
+        if window:is_focused() then
+          overrides.color_scheme = 'nordfox'
+        else
+          overrides.color_scheme = 'nightfox'
+        end
+        window:set_config_overrides(overrides)
+      end)
+
       return {
         color_scheme = "nordfox",
         font_size = 10,
