@@ -11,23 +11,24 @@
 
   xdg.enable = true;
 
-  home.packages = [
-    pkgs.htop
-    pkgs.btop
-    pkgs.delta
-    pkgs.fd
-    pkgs.exa
-    pkgs.jq
-    pkgs.ripgrep
-    pkgs.tree
-    pkgs.watch
-    pkgs.obsidian
-    pkgs.xclip
-    pkgs.ghq
-    pkgs.slack
-    pkgs.zoom-us
-    pkgs.asdf-vm
-    pkgs.tailscale
+  home.packages = with pkgs; [
+    gcc
+    htop
+    btop
+    delta
+    fd
+    exa
+    jq
+    ripgrep
+    tree
+    watch
+    obsidian
+    xclip
+    ghq
+    slack
+    zoom-us
+    asdf-vm
+    tailscale
   ];
 
   programs.git = {
@@ -78,6 +79,9 @@
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
+    plugins = with pkgs;[
+      vimPlugins.nvim-treesitter.withAllGrammars
+    ];
   };
 
   programs.zsh = {
