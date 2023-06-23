@@ -7,6 +7,9 @@
   home.sessionVariables = {
     EDITOR = "nvim";
     GHQ_ROOT = "/home/lunarxlark/dev/src";
+    ASDF_CONFIG_FILE = "/home/lunarxlark/.config/asdf/config";
+    ASDF_DATA_DIR = "/home/lunarxlark/.local/share/asdf";
+    ASDF_DIR = "/home/lunarxlark/.local/share/asdf-vm";
   };
 
   xdg.enable = true;
