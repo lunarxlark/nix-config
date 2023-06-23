@@ -110,14 +110,7 @@
       save = 10000;
       size = 10000;
       share = true;
-      ignorePatterns = [
-        "ls*"
-	"ll*"
-	"cd *"
-	"pwd"
-	"zsh"
-	"exit"
-      ];
+      ignorePatterns = [ "ls*" "ll*" "cd *" "pwd" "zsh" "exit" ];
     };
   };
 
