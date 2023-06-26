@@ -83,6 +83,7 @@ return {
         "sqls",
         "tsserver",
         "marksman",
+        "nixd",
       }
 
       local load = function(server)
