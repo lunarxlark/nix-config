@@ -7,9 +7,9 @@
   home.sessionVariables = {
     EDITOR = "nvim";
     GHQ_ROOT = "/home/lunarxlark/dev/src";
-    ASDF_CONFIG_FILE = "/home/lunarxlark/.config/asdf/config";
-    ASDF_DATA_DIR = "/home/lunarxlark/.local/share/asdf";
-    ASDF_DIR = "/home/lunarxlark/.local/share/asdf-vm";
+    #ASDF_CONFIG_FILE = "/home/lunarxlark/.config/asdf/config";
+    #ASDF_DATA_DIR = "/home/lunarxlark/.local/share/asdf";
+    #ASDF_DIR = "/home/lunarxlark/.asdf";
   };
 
   xdg.enable = true;
@@ -30,7 +30,7 @@
     ghq
     slack
     zoom-us
-    asdf-vm
+    #asdf-vm
     tailscale
   ];
 
@@ -105,7 +105,17 @@
       gp = "git pull origin";
       ghprv = "gh pr view --web";
     };
-    initExtra = builtins.readFile ./function.zsh;
+    initExtra = builtins.concatStringsSep "\n" [
+      (builtins.readFile ./function.zsh)
+      #''
+      #  # asdf-vm
+      #  source ${pkgs.asdf-vm}/share/asdf-vm/asdf.sh
+      #  fpath=(${pkgs.asdf-vm}/completions $fpath)
+      #''
+    ];
+    #initExtra = ''
+    #  source ${pkgs.asdf-vm}/share/asdf-vm/asdf.sh
+    #'';
     enableAutosuggestions = true;
     enableCompletion = true;
     enableSyntaxHighlighting = true;
