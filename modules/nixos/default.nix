@@ -1,6 +1,6 @@
-{ config, pkgs, ... }: {
+{ pkgs, ... }: {
   imports = [
     ./font.nix
-    ./input.nix
+    ./input
   ];
 }
