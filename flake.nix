@@ -21,7 +21,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.lunarxlark = import ./home-manager.nix;
+            home-manager.users.lunarxlark = import ./home/nixos;
 
             # Optionally, use home-manager.extraSpecialArgs to pass
             # arguments to home.nix
