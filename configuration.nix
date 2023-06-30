@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
@@ -92,7 +93,7 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       brave
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
@@ -143,11 +144,11 @@
     fontconfig = {
       enable = true;
 
-     defaultFonts = {
-       serif = [ "Noto Serif JP" "DejaVu Serif" ];
-       sansSerif = [ "Noto Sans CJK JP" "DejaVu Sans" ];
-       monospace = [ "Meslo LG M" ];
-     };
+      defaultFonts = {
+        serif = [ "Noto Serif JP" "DejaVu Serif" ];
+        sansSerif = [ "Noto Sans CJK JP" "DejaVu Sans" ];
+        monospace = [ "Meslo LG M" ];
+      };
     };
   };
 
