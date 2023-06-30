@@ -8,6 +8,7 @@
   imports =
     [
       # Include the results of the hardware scan.
+      ../../modules/nixos
       ./hardware-configuration.nix
     ];
 
@@ -126,31 +127,6 @@
   i18n.inputMethod = {
     enabled = "fcitx5";
     fcitx5.addons = with pkgs; [ fcitx5-mozc ];
-  };
-
-  fonts = {
-    fonts = with pkgs; [
-      # noto
-      noto-fonts
-      noto-fonts-cjk
-      noto-fonts-extra
-      noto-fonts-emoji
-      # fira-code
-      fira-code
-      fira-code-symbols
-      # meslo
-      meslo-lg
-    ];
-
-    fontconfig = {
-      enable = true;
-
-      defaultFonts = {
-        serif = [ "Noto Serif JP" "DejaVu Serif" ];
-        sansSerif = [ "Noto Sans CJK JP" "DejaVu Sans" ];
-        monospace = [ "Meslo LG M" ];
-      };
-    };
   };
 
   # Some programs need SUID wrappers, can be configured further or are
