@@ -1,6 +1,5 @@
 {
   description = "nix-config is my personal configuration.";
-
   nixConfig = {
     experimental-features = [ "nix-command" "flakes" ];
     allowUnfree = true;
@@ -31,14 +30,15 @@
           system = "x86_64-linux";
           modules = [
             ./hosts/nixos
+
             ({ pkgs, ... }: {
-              # Define a user account. Don't forget to set a password with ‘passwd’.
               users.users.${user} = {
                 isNormalUser = true;
                 shell = pkgs.zsh;
                 extraGroups = [ "networkmanager" "wheel" ];
               };
             })
+
             home-manager.nixosModules.home-manager
             {
               home-manager = {
@@ -46,9 +46,6 @@
                 useUserPackages = true;
                 users.${user} = import ./home/nixos;
               };
-
-              # Optionally, use home-manager.extraSpecialArgs to pass
-              # arguments to home.nix
             }
           ];
         };
