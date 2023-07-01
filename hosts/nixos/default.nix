@@ -46,18 +46,18 @@
     LC_TIME = "ja_JP.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  services.xserver = {
+    # Enable the X11 windowing system.
+    enable = true;
+    videoDrivers = [ "nvidia" ];
+    # Configure keymap in X11
+    layout = "us";
+    xkbVariant = "";
+  };
 
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
-
-  # Configure keymap in X11
-  services.xserver = {
-    layout = "us";
-    xkbVariant = "";
-  };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -86,18 +86,6 @@
   # services.xserver.libinput.enable = true;
 
   programs.zsh.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.lunarxlark = {
-    isNormalUser = true;
-    shell = pkgs.zsh;
-    description = "lunarxlark";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      brave
-      #  thunderbird
-    ];
-  };
 
   # Enable automatic login for the user.
   services.xserver.displayManager.autoLogin.enable = true;

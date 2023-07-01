@@ -20,6 +20,7 @@
     btop
     delta
     fd
+    brave
     exa
     jq
     ripgrep
