@@ -55,6 +55,7 @@
     # Configure keymap in X11
     layout = "us";
     xkbVariant = "";
+    libinput.touchpad.naturalScrolling = true;
 
     # Enable the GNOME Desktop Environment.
     displayManager.gdm.enable = true;
