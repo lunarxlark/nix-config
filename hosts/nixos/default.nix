@@ -46,6 +46,8 @@
     LC_TIME = "ja_JP.UTF-8";
   };
 
+  environment.pathsToLink = [ "/libexec" ];
+
   services.xserver = {
     # Enable the X11 windowing system.
     enable = true;
@@ -53,17 +55,27 @@
     # Configure keymap in X11
     layout = "us";
     xkbVariant = "";
+
+    # Enable the GNOME Desktop Environment.
+    displayManager.gdm.enable = true;
+    desktopManager.gnome.enable = true;
+
+    desktopManager.xterm.enable = false;
+    displayManager.defaultSession = "none+i3";
+    windowManager.i3 = {
+      enable = true;
+      extraPackages = with pkgs; [
+        dmenu # application launcher most popular
+        i3status # gives you the default i3 status bar
+        i3lock # default i3 screen locker
+        i3blocks # if you are planning on using i3blocks over i3status
+      ];
+    };
   };
 
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
-
-  # enable Nix Flakes and the new nix-command command line tool
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -86,10 +98,6 @@
   # services.xserver.libinput.enable = true;
 
   programs.zsh.enable = true;
-
-  # Enable automatic login for the user.
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "lunarxlark";
 
   # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
   systemd.services."getty@tty1".enable = false;
